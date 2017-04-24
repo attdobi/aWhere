@@ -202,7 +202,9 @@ class Awhere(object):
                       }
                 obsv_data.append(row)
             else:
-                print '%s failed' % result['title']
+                print 'http status: %d for query:%s\n%s' \
+                        % (result['httpStatus'], result['api'], \
+                        result['payload']['detailedMessage'])
         return obsv_data
 
     def flatten_batch(self, api_return):
@@ -226,6 +228,8 @@ class Awhere(object):
                         }
                     obsv_data.append(row)
             else:
-                print '%s failed' % result['payload']['_links']['self']
-                failed_data.append(result['payload']['_links']['self'])
+                print 'http status: %d for query:%s\n%s' \
+                        % (result['httpStatus'], result['api'], \
+                        result['payload']['detailedMessage'])
+                failed_data.append(result['api'])
         return obsv_data, failed_data
