@@ -17,12 +17,13 @@ pull_woreda_weather.py --woreda_latlon_path lat_lons --output_data_path data --s
 ## Make a single call:
 
 ```
+lat, lon = 10.01, 40.02
 awhere.single_call(lat, lon, '2016-02-01', '2017-02-01')
 ```
 
 ## Batch job for single geo location. Return a dataframe and write to csv
 ```
-lats, lon, title = 10.01, 40.02, 'Woreda1'
+lat, lon, title = 10.01, 40.02, 'Woreda1'
 dataframe, failed = awhere.fetch_data_single(lat, lon, title, '2016-02-01', '2017-02-01')
 dataframe.to_csv('data/test_single.csv')
 ```
