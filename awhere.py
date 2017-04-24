@@ -16,7 +16,7 @@ QUERY_MAX = 120
 class Awhere(object):
     ''' Class to interface with the aWhere API'''
 
-    def __init__(self, key, secret):
+    def __init__(self):
         self.key = KEY.strip()
         self.secret = SECRET.strip()
         self.location_url = 'https://api.awhere.com/v2/weather/locations'
@@ -80,9 +80,9 @@ class Awhere(object):
 
         while start_date <= end_date:
             api_call = {}
-            # Advance (QUERY_MAX-1)to account for the intial day
+            # Advance (QUERY_MAX-1)to account for the intial day.
             next_date = start_date + timedelta(days=(QUERY_MAX-1))
-            # Check if the next value has gone past the end date
+            # Check if the next value has gone past the end date.
             if next_date > end_date:
                 next_date = end_date
             start_date_str = start_date.strftime(AWHERE_DATE_FORMAT)
